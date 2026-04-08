@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 import LabCard from "../components/LabCard";
 import { useState, useEffect } from "react";
 
@@ -17,17 +17,19 @@ export default function Labs() {
     }, 1500);
   }, []);
 
-  function reservar(id) {
+  function reservar(id, nome) {
     setLabs(
       labs.map((lab) =>
         lab.id === id ? { ...lab, status: "Ocupado" } : lab
       )
     );
+
+    Alert.alert("Sucesso", `${nome} reservado com sucesso!`);
   }
 
   if (loading) {
     return (
-      <View style={styles.container}>
+      <View style={styles.containerCenter}>
         <Text style={styles.text}>Carregando laboratórios...</Text>
       </View>
     );
@@ -35,8 +37,8 @@ export default function Labs() {
 
   if (labs.length === 0) {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Nenhum laboratório encontrado</Text>
+      <View style={styles.containerCenter}>
+        <Text style={styles.text}>Nenhum laboratório disponível</Text>
       </View>
     );
   }
@@ -50,7 +52,7 @@ export default function Labs() {
           key={lab.id}
           nome={lab.nome}
           status={lab.status}
-          onPress={() => reservar(lab.id)}
+          onPress={() => reservar(lab.id, lab.nome)}
         />
       ))}
     </View>
@@ -63,12 +65,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#0B0B0B",
     padding: 20,
   },
+  containerCenter: {
+    flex: 1,
+    backgroundColor: "#0B0B0B",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   title: {
     color: "#ED145B",
-    fontSize: 22,
+    fontSize: 24,
     marginBottom: 20,
+    textAlign: "center",
   },
   text: {
     color: "#fff",
+    fontSize: 16,
   },
 });

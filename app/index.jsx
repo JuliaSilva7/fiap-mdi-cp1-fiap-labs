@@ -1,5 +1,6 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
+import Button from "../components/Button";
 
 export default function Home() {
   const router = useRouter();
@@ -8,19 +9,19 @@ export default function Home() {
     <View style={styles.container}>
       <Text style={styles.title}>FIAP Labs</Text>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => router.push("/labs")}
-      >
-        <Text style={styles.buttonText}>Ver Laboratórios</Text>
-      </TouchableOpacity>
+      <Text style={styles.subtitle}>
+        Gerencie reservas de laboratórios de forma simples
+      </Text>
 
-      <TouchableOpacity
-        style={styles.button}
+      <Button
+        title="Ver Laboratórios"
+        onPress={() => router.push("/labs")}
+      />
+
+      <Button
+        title="Minhas Reservas"
         onPress={() => router.push("/reservas")}
-      >
-        <Text style={styles.buttonText}>Minhas Reservas</Text>
-      </TouchableOpacity>
+      />
     </View>
   );
 }
@@ -31,21 +32,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#0B0B0B",
     justifyContent: "center",
     alignItems: "center",
+    padding: 20,
   },
   title: {
     color: "#ED145B",
-    fontSize: 28,
-    marginBottom: 40,
+    fontSize: 30,
+    marginBottom: 10,
   },
-  button: {
-    backgroundColor: "#ED145B",
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 15,
-    width: 200,
-  },
-  buttonText: {
+  subtitle: {
     color: "#fff",
+    marginBottom: 30,
     textAlign: "center",
   },
 });

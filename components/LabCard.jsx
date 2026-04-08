@@ -1,23 +1,22 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import Button from "./Button";
 
 export default function LabCard({ nome, status, onPress }) {
+  const livre = status === "Livre";
+
   return (
     <View style={styles.card}>
       <Text style={styles.title}>{nome}</Text>
 
-      <Text style={{ color: status === "Livre" ? "green" : "red" }}>
+      <Text style={[styles.status, { color: livre ? "#00FF7F" : "#FF4C4C" }]}>
         {status}
       </Text>
 
-      <TouchableOpacity
-        style={styles.button}
+      <Button
+        title={livre ? "Reservar" : "Indisponível"}
         onPress={onPress}
-        disabled={status === "Ocupado"}
-      >
-        <Text style={styles.buttonText}>
-          {status === "Livre" ? "Reservar" : "Indisponível"}
-        </Text>
-      </TouchableOpacity>
+        disabled={!livre}
+      />
     </View>
   );
 }
@@ -25,22 +24,17 @@ export default function LabCard({ nome, status, onPress }) {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "#1a1a1a",
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 10,
+    padding: 20,
+    borderRadius: 12,
+    marginBottom: 15,
   },
   title: {
     color: "#fff",
     fontSize: 18,
+    marginBottom: 5,
   },
-  button: {
-    marginTop: 10,
-    backgroundColor: "#ED145B",
-    padding: 10,
-    borderRadius: 8,
-  },
-  buttonText: {
-    color: "#fff",
-    textAlign: "center",
+  status: {
+    marginBottom: 10,
+    fontWeight: "bold",
   },
 });
