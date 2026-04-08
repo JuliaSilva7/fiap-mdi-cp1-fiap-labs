@@ -99,7 +99,9 @@ npx expo start
 
 ###  Vídeo / GIF
 
-![screen-20260408-033529-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2efc2053-52a2-4f16-a712-e51c17999b67)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2efc2053-52a2-4f16-a712-e51c17999b67" width="350"/>
+</p>
 
 
 ---
