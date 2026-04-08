@@ -55,7 +55,7 @@ git clone https://github.com/JuliaSilva7/fiap-mdi-cp1-fiap-labs.git
 cd fiap-mdi-cp1-fiap-labs
 
 # Instalar dependências
-npm install
+npm install --legacy-peer-deps
 
 # Rodar o projeto
 npx expo start
